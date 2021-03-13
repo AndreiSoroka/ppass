@@ -1,4 +1,3 @@
-const { BannerPlugin } = require("webpack");
 const { resolve } = require("path");
 
 module.exports = {
@@ -9,7 +8,4 @@ module.exports = {
     path: resolve(__dirname, 'dist/cli'),
     filename: 'cli.bundle.js',
   },
-  plugins: [
-    new BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
-  ]
 };

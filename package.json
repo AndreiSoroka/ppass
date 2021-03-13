@@ -17,10 +17,9 @@
     "url": "git@github.com:AndreiSoroka/ppass.git"
   },
   "bin": {
-    "ppass": "./dist/cli/cli.bundle.js",
-    "ppass-cli": "./dist/cli/cli.bundle.js"
+    "ppass": "./bin/ppass"
   },
-  "author": "Andrei Soroka",
+  "author": "Andrei Soroka <unickpro@gmail.com>",
   "licenses": [
     {
       "type": "MIT",
