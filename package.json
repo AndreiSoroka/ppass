@@ -1,6 +1,6 @@
 {
   "name": "ppass",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generate Private Password",
   "main": "index.js",
   "scripts": {
