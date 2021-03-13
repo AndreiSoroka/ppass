@@ -77,8 +77,13 @@ const promtSchema = {
       },
     ],
     initial: 0
+  },
+  continue: {
+    type: 'confirm',
+    name: 'value',
+    message: 'Continue?',
+    initial: true,
   }
-
 }
 
 class CliPpass {
@@ -93,9 +98,15 @@ class CliPpass {
       if (!result) {
         return;
       }
+
+      const { value } = await prompts(promtSchema.continue);
       console.log('______________');
       console.log('Good. You can check all commands --help');
       console.log('______________');
+      if (!value) {
+        console.log('Bye!');
+        return;
+      }
     }
 
     if (argv.random) {

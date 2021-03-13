@@ -5,9 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack build",
-    "watch": "webpack watch"
+    "watch": "webpack watch",
+    "start": "node dist/cli/cli.bundle.js",
+    "start:c": "node dist/cli/cli.bundle.js -c",
+    "start:r": "node dist/cli/cli.bundle.js -r",
+    "start:h": "node dist/cli/cli.bundle.js -h",
+    "start:v": "node dist/cli/cli.bundle.js -v"
   },
-  "author": "",
+  "bin": {
+    "ppass": "./dist/cli/cli.bundle.js",
+    "ppass-cli": "./dist/cli/cli.bundle.js"
+  },
+  "author": "Andrei Soroka",
   "license": "MIT",
   "devDependencies": {
     "webpack": "^5.25.0",
