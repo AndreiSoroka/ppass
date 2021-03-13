@@ -1,0 +1,21 @@
+{
+  "name": "ppass",
+  "version": "0.0.1",
+  "description": "Generate Private Password",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack build",
+    "watch": "webpack watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.25.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "appdata-path": "^1.0.0",
+    "prompts": "^2.4.0",
+    "yargs": "^17.0.0-candidate.6"
+  }
+}
