@@ -56,7 +56,7 @@ export function generateNewToken() {
 
   const generatedToken = new Array(60)
     .fill(null)
-    .map(() => generateRandomPassword1({ iterations: 10000 }))
+    .map(() => generateRandomPassword1())
     .join('');
   setToken(generatedToken);
   return generatedToken;
