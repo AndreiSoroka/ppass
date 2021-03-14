@@ -1,7 +1,7 @@
 {
   "name": "ppass",
-  "version": "0.0.3",
-  "description": "Generate Private Password",
+  "version": "0.1.0",
+  "description": "Generate Private Password instead of storing them (for the paranoid)",
   "main": "index.js",
   "scripts": {
     "build": "webpack build",
