@@ -5,6 +5,7 @@ import generateStaticPassword from './utils/generateStaticPassword.js'
 import { generateRandomPassword1 } from './utils/generateRandomPassword.js'
 import alphabets from "./utils/alphabets.js";
 import { setToken, getToken, getPathToken, generateNewToken, tokenExist } from "./utils/token.js";
+import { isSupportNodeCopyToClipboard, copyToClipboard } from "./utils/clipboard";
 
 
 const argv = yargs(hideBin(process.argv))
@@ -78,6 +79,30 @@ const promtSchema = {
     ],
     initial: 0
   },
+  usePasswords: {
+    type: 'select',
+    name: 'option',
+    message: 'Pick option',
+    choices: [
+      {
+        title: 'Show passwords',
+        value: 'show',
+      },
+      {
+        title: 'Copy STRONG password',
+        value: 'strong',
+      },
+      {
+        title: 'Copy MIDDLE password',
+        value: 'middle',
+      },
+      {
+        title: 'Copy LIGHT password',
+        value: 'light',
+      },
+    ],
+    initial: 0
+  },
   continue: {
     type: 'confirm',
     name: 'value',
@@ -123,8 +148,8 @@ class CliPpass {
   /**
    * Generate random password
    */
-  stepGenerateRandomPassword() {
-    this.showPasswords(generateRandomPassword1, {},);
+  async stepGenerateRandomPassword() {
+    await this.showPasswords(generateRandomPassword1, {},);
   }
 
   /**
@@ -188,11 +213,42 @@ class CliPpass {
     return option;
   }
 
-  showPasswords(fn, options) {
-    console.log('Generated:');
-    Object.keys(alphabets).forEach(key => {
-      console.log(`${key}:`, fn({ ...options, alphabet: alphabets[key] }));
-    });
+  async showPasswords(fn, options) {
+    let option = 'show';
+    if (isSupportNodeCopyToClipboard()) {
+      const userPasswords = await prompts(promtSchema.usePasswords);
+      option = userPasswords.option;
+    }
+
+    switch (option) {
+      case 'show':
+        console.log('Generated:');
+        Object.keys(alphabets).forEach(key => {
+          console.log(`${key}:`, fn({ ...options, alphabet: alphabets[key] }));
+        });
+        break;
+      case 'strong':
+        await this.copyToClipboard(fn({ ...options, alphabet: alphabets.STRONG }));
+        break;
+      case 'middle':
+        await this.copyToClipboard(fn({ ...options, alphabet: alphabets.MIDDLE }));
+        break;
+      case 'light':
+        await this.copyToClipboard(fn({ ...options, alphabet: alphabets.LIGHT }));
+        break;
+    }
+  }
+
+  copyToClipboard(value) {
+    return copyToClipboard(value)
+      .then(() => {
+        console.log('Copied to clipboard!');
+        return true;
+      })
+      .catch(() => {
+        console.error('Could not copy to clipboard! Sorry.,,');
+        return false;
+      })
   }
 }
 
