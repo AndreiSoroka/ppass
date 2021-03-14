@@ -1,11 +1,11 @@
-#ppass
+# ppass
 
 Utility for generating private passwords
 
 ### What problem does it solve?
 You get the opportunity to create **strong and unique crypto-proof passwords**.
 
-This utility is especially for you if you don’t want to
+This utility is especially for you if you don’t want to:
 - Remember all your passwords
 - Store them in browsers (like Google Chrome, Safari, Mozilla FireFox etc.)
 - Store them in password managers (like KeePasS, LastPass и 1Password etc.)
