@@ -127,7 +127,7 @@ class CliPpass {
       console.log('______________');
       const { value } = await prompts(promtSchema.continue);
       console.log('______________');
-      console.log('Good. More information: https://github.com/AndreiSoroka/ppass');
+      console.log('Good');
       console.log('______________');
       if (!value) {
         console.log('Bye!');

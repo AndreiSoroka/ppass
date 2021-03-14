@@ -3,15 +3,20 @@ import path from "path";
 import getAppDataPath from "appdata-path";
 import { generateRandomPassword1 } from './generateRandomPassword.js';
 
-const appPath = path.join(getAppDataPath(), '/.ppass');
-const filePath = path.join(appPath, '/.token');
+const appDataPath = getAppDataPath();
+const appPath = path.join(appDataPath, '.ppass');
+const filePath = path.join(appPath, '.token');
 
 function permissionErrorLog() {
   console.error('> To set a new token, you must have permissions');
   console.error(`>   remove with sudo: ${filePath}`);
 }
 
-
+// possible for clear docker container
+if (!fs.existsSync(appDataPath)) {
+  fs.mkdirSync(appDataPath);
+}
+// first start app
 if (!fs.existsSync(appPath)) {
   fs.mkdirSync(appPath);
 }
