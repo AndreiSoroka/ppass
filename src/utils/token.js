@@ -7,7 +7,7 @@ const appPath = path.join(getAppDataPath(), '/.ppass');
 const filePath = path.join(appPath, '/.token');
 
 function permissionErrorLog() {
-  console.error('> For set new token, you should have permissions');
+  console.error('> To set a new token, you must have permissions');
   console.error(`>   remove with sudo: ${filePath}`);
 }
 

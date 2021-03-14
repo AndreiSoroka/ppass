@@ -1,6 +1,6 @@
 # ppass
 
-Utility for generating private passwords
+Utility for generating private passwords instead of storing them for the paranoid.
 
 ### What problem does it solve?
 You get the opportunity to create **strong and unique crypto-proof passwords**.

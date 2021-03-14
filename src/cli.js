@@ -17,7 +17,7 @@ const argv = yargs(hideBin(process.argv))
   })
   .option('configure', {
     alias: 'c',
-    describe: 'Configure workspace (!important for first run)',
+    describe: 'Configure workspace (!important for the first run)',
     type: 'boolean'
   })
   .argv;
@@ -54,7 +54,7 @@ const promtSchema = {
         value: 'get'
       },
       {
-        title: 'Get token\'s path',
+        title: 'Get token path',
         value: 'path'
       },
     ],
@@ -68,11 +68,11 @@ const promtSchema = {
       {
         title: 'Generate new token',
         value: 'generate',
-        description: 'We generated token for you...'
+        description: 'We\'ll generate a token for you...'
       },
       {
         title: 'Set token',
-        description: 'If you have token (after migrate from another computer) or you would like create token myself',
+        description: 'If you have a token (after migrating from another computer) or you would like to create a token yourself',
         value: 'set'
       },
     ],
@@ -99,9 +99,10 @@ class CliPpass {
         return;
       }
 
+      console.log('______________');
       const { value } = await prompts(promtSchema.continue);
       console.log('______________');
-      console.log('Good. You can check all commands --help');
+      console.log('Good. More information: https://github.com/AndreiSoroka/ppass');
       console.log('______________');
       if (!value) {
         console.log('Bye!');
@@ -130,7 +131,6 @@ class CliPpass {
    * generate static password
    */
   async stepGenerateStaticPassword() {
-    console.log('Your password:')
     const { password } = await prompts(promtSchema.password);
 
     this.showPasswords(
@@ -177,7 +177,9 @@ class CliPpass {
       case 'set':
       case 'get':
       case 'generate':
+        console.log('______________');
         console.log('Save the token to a USB flash drive. Hide the flash drive in the pillow. Hide the pillow in the safe.');
+        console.log('More information: https://github.com/AndreiSoroka/ppass');
         break;
       default:
         break;
