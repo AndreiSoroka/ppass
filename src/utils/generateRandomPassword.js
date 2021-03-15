@@ -1,17 +1,17 @@
 import crypto from 'crypto';
-import generateStaticPassword from './generateStaticPassword.js';
-import alphabets from './alphabets.js';
+import alphabets from './alphabets';
+import generateStaticPassword from './generateStaticPassword';
 
-export function generateRandomPassword1(
+export default function generateRandomPassword(
   {
     iterations = 1,
-    alphabet = alphabets.STRONG
-  } = {}
+    alphabet = alphabets.STRONG,
+  } = {},
 ) {
   return generateStaticPassword({
     value: crypto.randomBytes(256),
     salt: crypto.randomBytes(256),
     alphabet,
     iterations,
-  })
+  });
 }

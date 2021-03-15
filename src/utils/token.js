@@ -1,13 +1,13 @@
-import fs from "fs";
-import path from "path";
-import getAppDataPath from "appdata-path";
-import { generateRandomPassword1 } from './generateRandomPassword.js';
+import fs from 'fs';
+import path from 'path';
+import getAppDataPath from 'appdata-path';
+import generateRandomPassword from './generateRandomPassword';
 
 const appDataPath = getAppDataPath();
 const appPath = path.join(appDataPath, '.ppass');
 const filePath = path.join(appPath, '.token');
 
-function permissionErrorLog() {
+export function permissionErrorLog() {
   console.error('> To set a new token, you must have permissions');
   console.error(`>   remove with sudo: ${filePath}`);
 }
@@ -21,25 +21,21 @@ if (!fs.existsSync(appPath)) {
   fs.mkdirSync(appPath);
 }
 
-function changePermission(permission = 0o777) {
-  const fd = fs.openSync(filePath, "r");
+function changePermission(permission = 0o400) {
+  const fd = fs.openSync(filePath, 'r');
   fs.fchmodSync(fd, permission);
 }
 
-function removeFile() {
-  if (!fs.existsSync(filePath)) {
-    return;
-  }
-
-  fs.rmSync(filePath);
+export function tokenExist() {
+  return fs.existsSync(filePath);
 }
 
 export function setToken(token = '') {
   if (tokenExist()) {
-    permissionErrorLog()
+    permissionErrorLog();
     return;
   }
-  removeFile();
+
   fs.writeFileSync(filePath, token);
   changePermission(0o400);
 }
@@ -55,18 +51,14 @@ export function getPathToken() {
 
 export function generateNewToken() {
   if (tokenExist()) {
-    permissionErrorLog()
-    return;
+    permissionErrorLog();
+    return '';
   }
 
-  const generatedToken = new Array(60)
+  const generatedToken = new Array(100)
     .fill(null)
-    .map(() => generateRandomPassword1())
+    .map(() => generateRandomPassword())
     .join('');
   setToken(generatedToken);
   return generatedToken;
-}
-
-export function tokenExist() {
-  return fs.existsSync(filePath);
 }

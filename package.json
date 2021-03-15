@@ -7,10 +7,8 @@
     "build": "webpack build",
     "watch": "webpack watch",
     "start": "node dist/cli/cli.bundle.js",
-    "start:c": "node dist/cli/cli.bundle.js -c",
-    "start:r": "node dist/cli/cli.bundle.js -r",
-    "start:h": "node dist/cli/cli.bundle.js -h",
-    "start:v": "node dist/cli/cli.bundle.js -v"
+    "start:dev": "node dist/cli/dev/cli.bundle.js",
+    "lint": "eslint **/*.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +26,11 @@
   ],
   "devDependencies": {
     "appdata-path": "^1.0.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-sonarjs": "^0.6.0",
+    "eslint-webpack-plugin": "^2.5.2",
     "prompts": "^2.4.0",
     "webpack": "^5.25.0",
     "webpack-cli": "^4.5.0",

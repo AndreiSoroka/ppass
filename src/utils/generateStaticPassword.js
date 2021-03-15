@@ -1,6 +1,5 @@
 import crypto from 'crypto';
-import alphabets from './alphabets.js';
-
+import alphabets from './alphabets';
 
 export default function generateStaticPassword(
   {
@@ -10,16 +9,18 @@ export default function generateStaticPassword(
     keyLength = 256,
     alphabet = alphabets.STRONG,
     iterations = 100000,
-  } = {}) {
+  } = {},
+) {
   return [...crypto.pbkdf2Sync(value, salt, iterations, keyLength, algorithm)]
-    .reduce((result, value, index) => {
+    .reduce((result, currentValue, index) => {
       if (index % 16 === 0) {
-        result.push(value);
+        result.push(currentValue);
       } else {
-        result[result.length - 1] += value;
+        // eslint-disable-next-line no-param-reassign
+        result[result.length - 1] += currentValue;
       }
       return result;
     }, [])
-    .map(item => item <= alphabet.length ? alphabet[item] : alphabet[item % alphabet.length])
+    .map((item) => (item <= alphabet.length ? alphabet[item] : alphabet[item % alphabet.length]))
     .join('');
 }
