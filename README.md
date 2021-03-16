@@ -1,5 +1,7 @@
 # ppass
 
+Console password manager without storage.
+
 Utility for generating private passwords instead of storing them for the paranoid.
 
 ### What problem does it solve?
@@ -8,7 +10,7 @@ You get the opportunity to create **strong and unique crypto-proof passwords**.
 This utility is especially for you if you don’t want to:
 - Remember all your passwords
 - Store them in browsers (like Google Chrome, Safari, Mozilla FireFox etc.)
-- Store them in password managers (like KeePasS, LastPass и 1Password etc.)
+- Store them in password managers (like KeePass, LastPass и 1Password etc.)
 
 ### Usage example
 You go to the site "my-space.duck" and want to sign up

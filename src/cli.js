@@ -54,7 +54,7 @@ async function firstInitApplication() {
 
 async function runCliPpass() {
   if (!tokenExist() && !argv.configure) {
-    const isContinue = firstInitApplication();
+    const isContinue = await firstInitApplication();
     if (!isContinue) return;
   }
 
