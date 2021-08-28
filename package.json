@@ -8,7 +8,8 @@
     "watch": "webpack watch",
     "start": "node dist/cli/cli.bundle.js",
     "start:dev": "node dist/cli/dev/cli.bundle.js",
-    "lint": "eslint **/*.js"
+    "lint": "eslint **/*.js",
+    "test": "mocha --require esm"
   },
   "repository": {
     "type": "git",
@@ -31,10 +32,11 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-sonarjs": "^0.6.0",
     "eslint-webpack-plugin": "^2.5.4",
+    "esm": "^3.2.25",
+    "mocha": "^9.1.0",
     "prompts": "^2.4.1",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "yargs": "^17.1.1"
-  },
-  "dependencies": {}
+  }
 }
