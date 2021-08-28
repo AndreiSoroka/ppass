@@ -1,7 +1,7 @@
 import prompts from 'prompts';
-import { CopyToClipboard, isSupportNodeCopyToClipboard } from '../utils/clipboard';
-import promtSchema from './promtSchema';
-import alphabets from '../utils/alphabets';
+import { CopyToClipboard, isSupportNodeCopyToClipboard } from '../utils/clipboard/index.mjs';
+import promtSchema from './promtSchema.mjs';
+import alphabets from '../utils/alphabets.mjs';
 
 function copyToClipboard(value) {
   return CopyToClipboard(value)

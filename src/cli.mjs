@@ -1,11 +1,11 @@
 import yargs from 'yargs';
 import prompts from 'prompts';
 import { hideBin } from 'yargs/helpers';
-import { tokenExist } from './utils/token';
-import promtSchema from './cli/promtSchema';
-import stepConfigureWorkspace from './cli/stepConfigureWorkspace';
-import stepGenerateRandomPassword from './cli/stepGenerateRandomPassword';
-import stepGenerateStaticPassword from './cli/stepGenerateStaticPassword';
+import { tokenExist } from './utils/token.mjs';
+import promtSchema from './cli/promtSchema.mjs';
+import stepConfigureWorkspace from './cli/stepConfigureWorkspace.mjs';
+import stepGenerateRandomPassword from './cli/stepGenerateRandomPassword.mjs';
+import stepGenerateStaticPassword from './cli/stepGenerateStaticPassword.mjs';
 
 function setOptionDefault(options) {
   return (options.includes(process.env.APP_OPTION) && { default: true });

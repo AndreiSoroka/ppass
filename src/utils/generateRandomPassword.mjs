@@ -1,6 +1,6 @@
 import crypto from 'crypto';
-import alphabets from './alphabets';
-import generateStaticPassword from './generateStaticPassword';
+import alphabets from './alphabets.mjs';
+import generateStaticPassword from './generateStaticPassword.mjs';
 
 export default function generateRandomPassword(
   {

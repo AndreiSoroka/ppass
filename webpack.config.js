@@ -3,7 +3,7 @@ const { resolve } = require('path');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
-  entry: './src/cli.js',
+  entry: './src/cli.mjs',
   target: 'node',
   output: {
     path: process.env.NODE_ENV === 'production'

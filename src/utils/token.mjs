@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import getAppDataPath from 'appdata-path';
-import generateRandomPassword from './generateRandomPassword';
+import generateRandomPassword from './generateRandomPassword.mjs';
 
 const appDataPath = getAppDataPath();
 const appPath = path.join(appDataPath, '.ppass');

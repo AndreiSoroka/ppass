@@ -5,8 +5,8 @@ import {
   getToken,
   setToken,
   tokenExist,
-} from '../utils/token';
-import promtSchema from './promtSchema';
+} from '../utils/token.mjs';
+import promtSchema from './promtSchema.mjs';
 
 export default async function stepConfigureWorkspace() {
   const { option } = await prompts(tokenExist()

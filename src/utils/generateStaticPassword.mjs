@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import alphabets from './alphabets';
+import alphabets from './alphabets.mjs';
 
 export default function generateStaticPassword(
   {
