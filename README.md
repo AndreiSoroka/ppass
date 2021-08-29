@@ -1,3 +1,6 @@
+| :zap:        Fixed for OS Windows in version 0.1.3   |
+|------------------------------------------------------|
+
 # ppass
 
 Console password manager without storage.
@@ -30,6 +33,7 @@ You can use any text as master-password.
 
 ```text
 Your password:
+> Type password: my-space andrei  #just example
 ✔ Type password … ***
 Generated:
 STRONG: /D^T+OaN^tYFJ@N!
@@ -39,7 +43,7 @@ LIGHT: UbFnnEmOZdsaOQxH
 
 after that you go to the site "bank.duck" and want to sign up
 ```text
-> Type password: bank andrei
+> Type password: bank andrei  #just example
 ✔ Type password … ***
 Generated:
 STRONG: BrXr#&b)U-oeO!&X
@@ -49,11 +53,15 @@ LIGHT: NmUKuYwfwfjXPlas
 
 back to "my-space.duck" and again:
 ```text
+> Type password: my-space andrei  #just example
+✔ Type password … ***
+Generated:
 STRONG: /D^T+OaN^tYFJ@N!
 MIDDLE: a2tpUfZlLq4DPSwF
 LIGHT: UbFnnEmOZdsaOQxH
 ```
 
+Wow! Magic! We again received the correct password for the first site!
 
 Designation:
 
@@ -68,12 +76,12 @@ Designation:
 
 ## Install
 ```bash
+# use npx (recommend)
+npx ppass
+
 # install global
 npm i ppass -g
 ppass
-
-# use npx
-npx ppass
 ```
 
 ## All commands
@@ -82,7 +90,7 @@ ppass -h
 -r, --random     Generate random password                            [boolean]
 -c, --configure  Configure workspace (!important for first run)      [boolean]
 -h, --help       Show help                                           [boolean]
--v, --version    Show version number                                 [boolean]
+-V, --version    Show version number                                 [boolean]
 ```
 
 ## Migrate to another computer
