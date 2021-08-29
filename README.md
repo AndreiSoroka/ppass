@@ -1,7 +1,8 @@
-| :zap:        Fixed for OS Windows in version 0.1.3   |
+# ppass
+
+| :zap:        Fix for OS Windows available in version 0.1.4   |
 |------------------------------------------------------|
 
-# ppass
 
 Console password manager without storage.
 
