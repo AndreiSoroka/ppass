@@ -9,7 +9,8 @@
     "start": "node dist/cli/cli.bundle.js",
     "start:dev": "node dist/cli/dev/cli.bundle.js",
     "lint": "eslint **/*.js",
-    "test": "mocha --require esm"
+    "test": "mocha --require esm",
+    "prepublishOnly": "npm test && npm run lint"
   },
   "repository": {
     "type": "git",
