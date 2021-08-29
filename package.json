@@ -1,6 +1,6 @@
 {
   "name": "ppass",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Generate Private Password instead of storing them (for the paranoid)",
   "main": "index.js",
   "scripts": {
