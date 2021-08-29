@@ -1,5 +1,7 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
+const webpack = require('webpack');
+const packageJson = require('./package.json');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
@@ -11,5 +13,10 @@ module.exports = {
       : resolve(__dirname, 'dist/cli/dev'),
     filename: 'cli.bundle.js',
   },
-  plugins: [new ESLintPlugin()],
+  plugins: [
+    new ESLintPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.APP_VERSION': `'${packageJson.version}'`,
+    }),
+  ],
 };

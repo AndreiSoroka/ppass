@@ -1,37 +1,21 @@
-import yargs from 'yargs';
+import { Command } from 'commander';
 import prompts from 'prompts';
-import { hideBin } from 'yargs/helpers';
 import { tokenExist } from './utils/token.mjs';
 import promtSchema from './cli/promtSchema.mjs';
 import stepConfigureWorkspace from './cli/stepConfigureWorkspace.mjs';
 import stepGenerateRandomPassword from './cli/stepGenerateRandomPassword.mjs';
 import stepGenerateStaticPassword from './cli/stepGenerateStaticPassword.mjs';
 
-function setOptionDefault(options) {
-  return (options.includes(process.env.APP_OPTION) && { default: true });
-}
+const program = new Command();
 
-const { argv } = yargs(hideBin(process.argv))
-  .option('help', {
-    alias: 'h',
-    ...setOptionDefault(['h', 'help']),
-  })
-  .option('version', {
-    alias: 'v',
-    ...setOptionDefault(['v', 'version']),
-  })
-  .option('random', {
-    alias: 'r',
-    describe: 'Generate random password',
-    type: 'boolean',
-    ...setOptionDefault(['r', 'random']),
-  })
-  .option('configure', {
-    alias: 'c',
-    describe: 'Configure workspace (!important for the first run)',
-    type: 'boolean',
-    ...setOptionDefault(['c', 'configure']),
-  });
+program.version(process.env.APP_VERSION);
+
+program
+  .option('-r, --random', 'generate random password')
+  .option('-c, --configure', 'configure workspace (!important for the first run)');
+
+program.parse(process.argv);
+const options = program.opts();
 
 async function firstInitApplication() {
   console.log('Hello!');
@@ -53,14 +37,14 @@ async function firstInitApplication() {
 }
 
 async function runCliPpass() {
-  if (!tokenExist() && !argv.configure) {
+  if (!tokenExist() && !options.configure) {
     const isContinue = await firstInitApplication();
     if (!isContinue) return;
   }
 
-  if (argv.random) {
+  if (options.random) {
     await stepGenerateRandomPassword();
-  } else if (argv.configure) {
+  } else if (options.configure) {
     await stepConfigureWorkspace();
   } else {
     await stepGenerateStaticPassword();
